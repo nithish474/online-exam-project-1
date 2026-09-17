@@ -11,22 +11,16 @@ pipeline {
 
     stages {
 
-        stage('Checkout') {
-            steps {
-                git branch: 'main',
-                    url: 'https://github.com/nithish474/online-exam-project-1.git'
-            }
-        }
-
         stage('Show Environment') {
             steps {
                 echo "Selected environment: ${params.ENVIRONMENT}"
+                bat '"C:\\Users\\suman\\AppData\\Local\\Programs\\Python\\Python313\\python.exe" --version'
             }
         }
 
         stage('Build Online Examination System') {
             steps {
-                bat 'python -m py_compile app.py'
+                bat '"C:\\Users\\suman\\AppData\\Local\\Programs\\Python\\Python313\\python.exe" -m py_compile app.py'
                 echo "Online Examination System built successfully for ${params.ENVIRONMENT}."
             }
         }
