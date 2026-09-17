@@ -11,10 +11,16 @@ pipeline {
 
     stages {
 
+        stage('Checkout') {
+            steps {
+                git branch: 'main',
+                    url: 'https://github.com/nithish474/online-exam-project-1.git'
+            }
+        }
+
         stage('Show Environment') {
             steps {
                 echo "Selected environment: ${params.ENVIRONMENT}"
-                bat '"C:\\Users\\suman\\AppData\\Local\\Programs\\Python\\Python313\\python.exe" --version'
             }
         }
 
